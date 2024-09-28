@@ -47,9 +47,9 @@
 				<configuration>
 					<image>
 						<builder>paketobuildpacks/builder-jammy-tiny</builder>
-						<name>ghcr.io/${project.artifactId}:${project.version}</name>
+						<name>ghcr.io/gbaso/${project.artifactId}:${project.version}</name>
 						<tags>
-							<tag>ghcr.io/${project.artifactId}:latest</tag>
+							<tag>ghcr.io/gbaso/${project.artifactId}:latest</tag>
 						</tags>
 					</image>
 					<docker>
