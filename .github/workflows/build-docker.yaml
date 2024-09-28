@@ -6,7 +6,11 @@ on:
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 21
