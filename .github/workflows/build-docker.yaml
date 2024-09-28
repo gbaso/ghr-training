@@ -9,7 +9,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-      id-token: write
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 21
@@ -27,4 +26,4 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Publish Image
-        run: ./mvnw -B spring-boot:build-image -Dspring-boot.build-image.publish=true
+        run: ./mvnw -B spring-boot:build-image -Pnative -Dspring-boot.build-image.publish=true
