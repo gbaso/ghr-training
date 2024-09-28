@@ -5,6 +5,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build_and_publish:
@@ -30,5 +31,16 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       - name: Build and Publish Image
-        run: ./mvnw -B spring-boot:build-image -Dspring-boot.build-image.publish=true
+        run: ./mvnw -B spring-boot:build-image -Dspring-boot.build-image.publish=true -Ddocker.publishRegistry.username=${{ github.actor }} -Ddocker.publishRegistry.password=${{ secrets.GITHUB_TOKEN }}
+      - name: Generate artifact attestation
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
