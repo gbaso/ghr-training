@@ -31,4 +31,4 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Publish Image
-        run: ./mvnw -X -B spring-boot:build-image -Dspring-boot.build-image.publish=true
+        run: ./mvnw -B spring-boot:build-image -Dspring-boot.build-image.publish=true
