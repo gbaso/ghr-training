@@ -18,8 +18,7 @@
 
 	<properties>
 		<java.version>21</java.version>
-		<docker.publishRegistry.url>ghcr.io</docker.publishRegistry.url>
-		<docker.publishRegistry.username>gbaso</docker.publishRegistry.username>
+		<docker.publishRegistry.username />
 		<docker.publishRegistry.password />
 	</properties>
 
@@ -48,14 +47,13 @@
 				<configuration>
 					<image>
 						<builder>paketobuildpacks/builder-jammy-tiny</builder>
-						<name>gbaso/${project.artifactId}:${project.version}</name>
+						<name>ghcr.io/${project.artifactId}:${project.version}</name>
 						<tags>
-							<tag>gbaso/${project.artifactId}:latest</tag>
+							<tag>ghcr.io/${project.artifactId}:latest</tag>
 						</tags>
 					</image>
 					<docker>
 						<publishRegistry>
-							<url>${docker.publishRegistry.url}</url>
 							<username>${docker.publishRegistry.username}</username>
 							<password>${docker.publishRegistry.password}</password>
 						</publishRegistry>
