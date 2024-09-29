@@ -1,0 +1,40 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/java
+{
+	"name": "Java",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/java:1": {
+			"installMaven": true,
+			"version": "latest",
+			"jdkDistro": "tem",
+			"mavenVersion": "latest"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"moby": true,
+			"azureDnsAutoDetection": true,
+			"installDockerBuildx": true,
+			"installDockerComposeSwitch": true,
+			"version": "latest",
+			"dockerDashComposeVersion": "latest"
+		}
+	},
+	"customizations": {
+		"vscode": {
+		  "settings": {
+			"java.server.launchMode": "Standard"
+		  },
+		  "extensions":[
+			"vscjava.vscode-java-pack",
+			"vscjava.vscode-maven",
+			"github.vscode-github-actions",
+			"github.vscode-pull-request-github",
+			"redhat.vscode-xml",
+			"vmware.vscode-boot-dev-pack",
+			"mhutchie.git-graph"
+		  ]
+		}
+	  },
+	  "forwardPorts": [8080, 5005]
+}
